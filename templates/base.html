@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carnet de santé de la femme</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar"><div class="brand"><span class="logo">♡</span><div><b>Carnet de santé de la femme</b><small>الدفتر الصحي للمرأة</small></div></div>
+<div class="search">⌕　 Rechercher une information...</div><div class="user">●　Bonjour, Amal</div></header>
+<div class="layout">
+<aside class="sidebar">
+<a class="{{ 'active' if page=='Accueil' else '' }}" href="/">⌂　Accueil</a>
+<a class="{{ 'active' if page=='Mon profil' else '' }}" href="/profil">♙　Mon profil</a>
+<a class="{{ 'active' if page=='Mon carnet médical' else '' }}" href="/dossier">▤　Mon carnet médical</a>
+<a class="{{ 'active' if page=='Rendez-vous' else '' }}" href="/rendez-vous">▦　Rendez-vous</a>
+<a class="{{ 'active' if page=='Suivi cancer du sein' else '' }}" href="/suivi-cancer-sein">♡　Suivi cancer du sein</a>
+<a class="{{ 'active' if page=='Vaccination' else '' }}" href="/vaccination">✚　Vaccination</a>
+<a class="{{ 'active' if page=='Rappels & Notifications' else '' }}" href="/rappels">♧　Rappels & Notifications</a>
+<a class="{{ 'active' if page=='Conseils santé' else '' }}" href="/conseils">⚙　Conseils santé</a>
+<a class="{{ 'active' if page=='Documents' else '' }}" href="/documents">▧　Documents</a>
+<a class="{{ 'active' if page=='Paramètres' else '' }}" href="/parametres">⚙　Paramètres</a>
+<div class="sidequote">🌿<br><small>Une femme en bonne santé<br>pour un avenir meilleur</small></div>
+</aside>
+<main class="main">
+{% with messages = get_flashed_messages() %}{% if messages %}<div class="flash">{% for m in messages %}{{m}}{% endfor %}</div>{% endif %}{% endwith %}
+{% block content %}{% endblock %}
+</main>
+<aside class="advantages"><h2>Les avantages de ce site</h2>
+<div class="adv"><span class="bubble blue">▱</span><div><b>Accès facile et sécurisé</b><p>Consultez votre carnet de santé à tout moment.</p></div></div>
+<div class="adv"><span class="bubble green">▱</span><div><b>Centralisation de vos informations</b><p>Consultations, examens et antécédents au même endroit.</p></div></div>
+<div class="adv"><span class="bubble coral">♧</span><div><b>Rappels et notifications</b><p>Alertes pour vos rendez-vous et dépistages.</p></div></div>
+<div class="adv"><span class="bubble blue">▦</span><div><b>Prise de rendez-vous en ligne</b><p>Gagnez du temps et simplifiez votre suivi.</p></div></div>
+<div class="adv"><span class="bubble purple">♢</span><div><b>Suivi personnalisé</b><p>Adapté aux étapes de la vie de la femme.</p></div></div>
+<div class="adv"><span class="bubble orange">☼</span><div><b>Conseils et informations</b><p>Guides et campagnes de prévention.</p></div></div>
+</aside>
+</div>
+</body></html>

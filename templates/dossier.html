@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block content %}<h1>Mon carnet médical</h1><p class="subtitle">Historique des consultations, examens et suivis</p>
+<form class="formbox compact" method="post"><h3>Ajouter un élément</h3><div class="formgrid">
+<label>Date<input type="date" name="date" required></label><label>Type<input name="type" placeholder="Consultation / Examen" required></label>
+<label>Titre<input name="titre" required></label><label>Lieu<input name="lieu"></label>
+<label class="wide">Description<textarea name="description"></textarea></label></div><button>Ajouter au carnet</button></form>
+{% for r in records %}<article class="record"><span class="tileicon">♧</span><div><small>{{r.date}} · {{r.type}}</small><h3>{{r.titre}}</h3><p>{{r.description}} — {{r.lieu}}</p></div></article>{% else %}<p>Aucun dossier enregistré.</p>{% endfor %}{% endblock %}

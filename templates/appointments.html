@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block content %}<h1>Prise de rendez-vous</h1><p class="subtitle">Ajoutez et consultez vos rendez-vous</p>
+<form class="formbox compact" method="post"><div class="formgrid"><label>Date<input type="date" name="date" required></label><label>Heure<input type="time" name="heure" required></label><label>Service<input name="service" placeholder="Consultation gynécologique" required></label><label>Lieu<input name="lieu" placeholder="CHR Dakhla"></label></div><button>Ajouter le rendez-vous</button></form>
+{% for a in appointments %}<article class="record"><span class="datebox">{{a.date}}<br>{{a.heure}}</span><div><h3>{{a.service}}</h3><p>{{a.lieu}} · {{a.statut}}</p></div></article>{% else %}<p>Aucun rendez-vous.</p>{% endfor %}{% endblock %}

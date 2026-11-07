@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block content %}<h1>Rappels & Notifications</h1><p class="subtitle">Organisez vos rappels de santé</p>
+<form class="formbox compact" method="post"><div class="formgrid"><label>Date<input type="date" name="date" required></label><label>Titre<input name="titre" required placeholder="Vaccin, dépistage..."></label><label class="wide">Détails<textarea name="details"></textarea></label></div><button>Ajouter un rappel</button></form>
+{% for r in reminders %}<article class="record"><span class="tileicon">♧</span><div><small>{{r.date}} · {{r.statut}}</small><h3>{{r.titre}}</h3><p>{{r.details}}</p></div></article>{% else %}<p>Aucun rappel.</p>{% endfor %}{% endblock %}

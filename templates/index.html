@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% block content %}
+<section class="hero"><div><h1>Bienvenue sur votre<br>carnet de santé numérique</h1><p>Un espace personnel pour suivre votre santé,<br>à chaque étape de votre vie.</p></div><div class="hero-art">♀<span>🌿</span></div></section>
+<div class="cards">
+<a class="tile" href="/profil"><span class="tileicon">♙</span><h3>Mon profil</h3><p>Consultez et mettez à jour vos informations personnelles</p></a>
+<a class="tile pink" href="/rendez-vous"><span class="tileicon">▦</span><h3>Mes rendez-vous</h3><p>Prenez ou consultez vos rendez-vous médicaux</p></a>
+<a class="tile" href="/dossier"><span class="tileicon">▤</span><h3>Mon carnet médical</h3><p>Accédez à vos examens, consultations et résultats</p></a>
+<a class="tile pink" href="/rappels"><span class="tileicon">♧</span><h3>Rappels</h3><p>Ne manquez plus vos rendez-vous et dépistages</p></a>
+<a class="tile" href="/suivi-cancer-sein"><span class="tileicon">♡</span><h3>Suivi du cancer du sein</h3><p>Consultations, examens, traitements et prochains rendez-vous.</p></a>
+<a class="tile pink" href="/vaccination"><span class="tileicon">✚</span><h3>Vaccination</h3><p>Historique des vaccins, doses et rappels.</p></a>
+</div>
+<div class="sectionhead"><h2>Mes prochains rendez-vous</h2><a href="/rendez-vous">Voir tous →</a></div>
+{% for a in appointments %}<div class="appointment"><div class="datebox"><b>{{a.date[8:10]}}</b><small>{{a.date[5:7]}}/{{a.date[:4]}}</small></div><div class="apptinfo"><b>{{a.service}}</b><p>{{a.lieu}}　◷ {{a.heure}}</p></div><span class="status">{{a.statut}}</span></div>{% else %}<p>Aucun rendez-vous enregistré.</p>{% endfor %}
+<div class="quote">« Prendre soin de sa santé,<br>c’est prendre soin de son avenir. » ♡</div>
+{% endblock %}

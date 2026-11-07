@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block content %}<h1>Mon profil</h1><p class="subtitle">Gérez vos informations personnelles</p>
+<form class="formbox" method="post"><div class="formgrid">
+{% for field,label in [('nom','Nom'),('prenom','Prénom'),('naissance','Date de naissance'),('adresse','Adresse'),('telephone','Téléphone'),('email','E-mail')] %}
+<label>{{label}}<input name="{{field}}" value="{{profile[field] or ''}}" {% if field=='email' %}type="email"{% else %}type="text"{% endif %}></label>
+{% endfor %}</div><button>Enregistrer les modifications</button></form>{% endblock %}

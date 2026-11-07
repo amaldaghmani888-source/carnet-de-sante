@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% block content %}
+<h1>Suivi du cancer du sein</h1><p class="subtitle">Consignez les consultations, examens et étapes du suivi médical.</p>
+<div class="formbox compact"><form method="post"><h3>Ajouter une étape de suivi</h3><div class="formgrid">
+<label>Date *<input type="date" name="date" required></label>
+<label>Type de suivi *<select name="suivi_type" required><option value="">Choisir</option><option>Consultation</option><option>Mammographie</option><option>Échographie</option><option>Biopsie</option><option>Résultat d’analyse</option><option>Chirurgie</option><option>Chimiothérapie</option><option>Radiothérapie</option><option>Hormonothérapie</option><option>Autre examen ou suivi</option></select></label>
+<label>Professionnel / établissement<input name="professionnel"></label><label>Traitement / étape<input name="traitement"></label>
+<label class="wide">Résultat ou compte rendu<textarea name="examen_resultat"></textarea></label>
+<label>Prochain rendez-vous<input type="date" name="prochain_rdv"></label>
+<label class="wide">Notes<textarea name="notes"></textarea></label>
+</div><button>Enregistrer le suivi</button></form></div>
+<h2>Historique du suivi</h2>
+{% for s in suivis %}<article class="record"><span class="tileicon">♡</span><div><small>{{s.date}} · {{s.suivi_type}}</small><h3>{{s.traitement or 'Étape de suivi'}}</h3><p>{% if s.professionnel %}{{s.professionnel}} · {% endif %}{{s.examen_resultat or ''}}</p>{% if s.prochain_rdv %}<p><b>Prochain rendez-vous :</b> {{s.prochain_rdv}}</p>{% endif %}{% if s.notes %}<p>{{s.notes}}</p>{% endif %}</div></article>{% else %}<p>Aucun suivi enregistré.</p>{% endfor %}
+<p class="subtitle">Cet espace conserve vos informations et ne remplace pas le suivi ni les recommandations de votre équipe médicale.</p>{% endblock %}

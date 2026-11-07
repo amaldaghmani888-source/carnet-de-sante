@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block content %}
+<h1>Mon carnet de vaccination</h1><p class="subtitle">Enregistrez les vaccins reçus, les doses et les dates de rappel conseillées par un professionnel.</p>
+<div class="formbox compact"><form method="post"><h3>Ajouter une vaccination</h3><div class="formgrid">
+<label>Date d’administration *<input type="date" name="date" required></label><label>Nom du vaccin *<input name="vaccin" required></label>
+<label>Dose<input name="dose" placeholder="Ex. : 1re dose, rappel"></label><label>Numéro de lot<input name="lot"></label>
+<label>Professionnel / centre<input name="professionnel"></label><label>Date du prochain rappel<input type="date" name="prochain_rappel"></label>
+<label class="wide">Notes<textarea name="notes"></textarea></label>
+</div><button>Enregistrer la vaccination</button></form></div>
+<h2>Historique des vaccinations</h2>
+{% for v in vaccins %}<article class="record"><span class="tileicon">✚</span><div><small>{{v.date}}</small><h3>{{v.vaccin}}</h3><p>{% if v.dose %}{{v.dose}} · {% endif %}{% if v.lot %}Lot : {{v.lot}} · {% endif %}{{v.professionnel or ''}}</p>{% if v.prochain_rappel %}<p><b>Prochain rappel :</b> {{v.prochain_rappel}}</p>{% endif %}{% if v.notes %}<p>{{v.notes}}</p>{% endif %}</div></article>{% else %}<p>Aucune vaccination enregistrée.</p>{% endfor %}
+<p class="subtitle">Les vaccins et dates de rappel doivent être confirmés avec un médecin ou un centre de vaccination.</p>{% endblock %}

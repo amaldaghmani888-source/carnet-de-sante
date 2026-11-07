@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block content %}<h1>Conseils santé</h1><p class="subtitle">Informations générales de prévention</p>
+<div class="cards">{% for title,desc in tips %}<article class="tile"><span class="tileicon">♡</span><h3>{{title}}</h3><p>{{desc}}</p></article>{% endfor %}</div><p class="note">Ces informations sont générales et ne remplacent pas l’avis d’un professionnel de santé.</p>{% endblock %}
